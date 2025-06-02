@@ -1,0 +1,75 @@
+{% extends 'franchise_owner/base.html' %}
+
+{% block title %}Franchise Owner Dashboard{% endblock %}
+
+{% block content %}
+<div class="mb-6">
+  <h1 class="text-3xl font-semibold text-green-700">Welcome, {{ request.user.get_full_name }}</h1>
+  <p class="text-sm text-gray-500">Franchise Analytics Overview</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+  <div class="bg-white rounded-xl p-5 shadow border-t-4 border-blue-400">
+    <p class="text-gray-500 text-sm">Total Students</p>
+    <h2 class="text-2xl font-bold text-blue-700">{{ total_students }}</h2>
+  </div>
+  <div class="bg-white rounded-xl p-5 shadow border-t-4 border-green-400">
+    <p class="text-gray-500 text-sm">Total Teachers</p>
+    <h2 class="text-2xl font-bold text-green-700">{{ total_teachers }}</h2>
+  </div>
+  <div class="bg-white rounded-xl p-5 shadow border-t-4 border-yellow-400">
+    <p class="text-gray-500 text-sm">Courses Offered</p>
+    <h2 class="text-2xl font-bold text-yellow-700">{{ total_courses }}</h2>
+  </div>
+  <div class="bg-white rounded-xl p-5 shadow border-t-4 border-purple-400">
+    <p class="text-gray-500 text-sm">Admissions</p>
+    <h2 class="text-2xl font-bold text-purple-700">{{ total_admissions }}</h2>
+  </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 mb-8">
+  <a href="{% url 'franchise_add_student' %}" class="p-4 bg-blue-100 hover:bg-blue-200 rounded-lg shadow text-center text-blue-800 font-medium">Add Student</a>
+  <a href="{% url 'franchise_add_teacher' %}" class="p-4 bg-green-100 hover:bg-green-200 rounded-lg shadow text-center text-green-800 font-medium">Add Teacher</a>
+  <a href="{% url 'franchise_task_list' %}" class="p-4 bg-purple-100 hover:bg-purple-200 rounded-lg shadow text-center text-purple-800 font-medium">My Tasks</a>
+</div>
+
+<!-- Two Column: Admissions + Reports -->
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+  <!-- Recent Admissions -->
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">Recent Admissions</h3>
+    <ul class="space-y-3">
+      {% for admission in recent_admissions %}
+      <li class="flex justify-between border-b pb-2">
+        <span>{{ admission.student.get_full_name }}</span>
+        <span class="text-sm text-gray-500">{{ admission.applied_date }}</span>
+      </li>
+      {% empty %}
+      <li class="text-sm text-gray-500">No recent admissions.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Recent Reports -->
+  <div class="bg-white p-6 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-700 mb-4">Recent Sales Reports</h3>
+    <ul class="space-y-3">
+      {% for report in recent_reports %}
+      <li class="flex justify-between border-b pb-2">
+        <span>{{ report.month }} {{ report.year }}</span>
+        <a href="{{ report.report_file.url }}" class="text-blue-600 text-sm hover:underline" download>Download</a>
+      </li>
+      {% empty %}
+      <li class="text-sm text-gray-500">No reports uploaded.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- Placeholder for Chart Section -->
+<div class="bg-white mt-8 p-6 rounded-xl shadow text-center text-gray-400">
+  <p>📊 Chart analytics section (like revenue trend, student growth) – Coming soon!</p>
+</div>
+{% endblock %}

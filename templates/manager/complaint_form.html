@@ -1,0 +1,12 @@
+{% extends "manager/base.html" %}
+{% block title %}Complaint Form{% endblock %}
+{% block content %}
+<div class="p-6 max-w-xl mx-auto bg-white shadow rounded">
+  <h2 class="text-xl font-bold mb-4">{{ form.instance.pk|yesno:"Edit Complaint,New Complaint" }}</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Save</button>
+    <a href="{% url 'complaint_list' %}" class="ml-2 text-gray-600 hover:underline">Cancel</a>
+  </form>
+</div>
+{% endblock %}

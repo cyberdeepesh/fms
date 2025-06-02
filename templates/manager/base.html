@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Manager Portal{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+      sidebar.classList.toggle('-translate-x-full');
+      backdrop.classList.toggle('hidden');
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.add('-translate-x-full');
+      document.getElementById('backdrop').classList.add('hidden');
+    }
+  </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Mobile Top Bar -->
+  <div class="bg-green-700 text-white flex items-center justify-between p-4 lg:hidden">
+    <div class="text-xl font-bold">Learn Net</div>
+    <button onclick="toggleSidebar()" class="focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden" onclick="closeSidebar()"></div>
+
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+           class="fixed z-40 inset-y-0 left-0 w-64 bg-green-700 text-white transform -translate-x-full transition-transform duration-200 ease-in-out lg:translate-x-0 lg:relative lg:flex-shrink-0">
+      <div class="px-6 py-4 text-2xl font-bold border-b border-green-600">Learn Net</div>
+      <nav class="p-6 space-y-4">
+        <a href="{% url 'manager_dashboard' %}" class="block px-3 py-2 rounded hover:bg-green-600">Dashboard</a>
+        <a href="{% url 'franchise_list' %}" class="block px-3 py-2 rounded hover:bg-green-600">Franchises</a>
+        <a href="{% url 'task_list' %}" class="block px-3 py-2 rounded hover:bg-green-600">Tasks</a>
+        <a href="{% url 'complaint_list' %}" class="block px-3 py-2 rounded hover:bg-green-600">Complaints</a>
+        <a href="{% url 'logout' %}" class="block px-3 py-2 rounded bg-red-500 hover:bg-red-600 text-white">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
+      {% block content %}
+      {% endblock %}
+    </main>
+  </div>
+
+</body>
+</html>

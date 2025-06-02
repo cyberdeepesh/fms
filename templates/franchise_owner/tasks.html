@@ -1,0 +1,29 @@
+{% extends "franchise_owner/base.html" %}
+{% block title %}Tasks{% endblock %}
+{% block content %}
+<div class="p-6">
+  <h2 class="text-2xl font-semibold text-blue-800 mb-4">Tasks Assigned by Teachers</h2>
+  <table class="w-full bg-white shadow rounded">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="px-4 py-2">Title</th>
+        <th class="px-4 py-2">Course</th>
+        <th class="px-4 py-2">Assigned By</th>
+        <th class="px-4 py-2">Due Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr class="border-b">
+        <td class="px-4 py-2">{{ task.title }}</td>
+        <td class="px-4 py-2">{{ task.course.title }}</td>
+        <td class="px-4 py-2">{{ task.assigned_by.get_full_name }}</td>
+        <td class="px-4 py-2">{{ task.due_date }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" class="text-center py-4">No tasks found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

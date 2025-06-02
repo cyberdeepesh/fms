@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Franchise Owner{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Wrapper -->
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-lg border-r hidden md:block">
+      <div class="p-6 border-b">
+        <h1 class="text-2xl font-bold text-green-600">Learn Net</h1>
+        <p class="text-sm text-gray-500">Franchise Owner</p>
+      </div>
+      <nav class="p-4 space-y-2">
+        <a href="{% url 'franchise_dashboard' %}" class="block px-4 py-2 rounded hover:bg-green-100 text-green-700 font-medium">Dashboard</a>
+        <a href="{% url 'student_list' %}" class="block px-4 py-2 rounded hover:bg-green-100">My Students</a>
+        <a href="{% url 'teacher_list' %}" class="block px-4 py-2 rounded hover:bg-green-100">My Teachers</a>
+        <a href="{% url 'course_list' %}" class="block px-4 py-2 rounded hover:bg-green-100">Courses</a>
+        <a href="{% url 'franchise_upload_report' %}" class="block px-4 py-2 rounded hover:bg-green-100">Upload Report</a>
+        <a href="{% url 'franchise_complaint_list' %}" class="block px-4 py-2 rounded hover:bg-green-100">Complaints</a>
+        <a href="{% url 'logout' %}" class="block mt-6 px-4 py-2 bg-red-100 hover:bg-red-200 rounded text-red-700">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col">
+
+      <!-- Top Navbar -->
+      <header class="bg-white shadow px-4 py-3 flex items-center justify-between border-b">
+        <div class="block md:hidden">
+          <!-- Add hamburger menu if implementing mobile nav -->
+          <button id="menu-toggle" class="text-gray-500 hover:text-green-600">
+            ☰
+          </button>
+        </div>
+        <h2 class="text-xl font-semibold text-green-700">Dashboard</h2>
+        <div class="flex items-center space-x-4">
+          <span class="text-sm text-gray-600 hidden sm:block">{{ request.user.get_full_name }}</span>
+          <img src="https://ui-avatars.com/api/?name={{ request.user.get_full_name|urlencode }}&background=22c55e&color=fff" class="w-8 h-8 rounded-full" alt="User Avatar">
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <section class="p-6 overflow-y-auto flex-1">
+        {% block content %}{% endblock %}
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>

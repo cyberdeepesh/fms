@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Portal | Learn Net</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-lg hidden md:block">
+            <div class="p-4 border-b">
+                <h1 class="text-xl font-bold">Teacher Panel</h1>
+            </div>
+            <nav class="p-4 space-y-2">
+                <a href="{% url 'teacher_dashboard' %}" class="block px-3 py-2 rounded hover:bg-gray-100 {% if request.path == '/dashboard/teacher/' %}bg-blue-100 font-semibold{% endif %}">Dashboard</a>
+                <!-- Add more links as needed -->
+                <a href="{% url 'teacher_assigned_tasks' %}" class="block px-3 py-2 rounded hover:bg-gray-100">Assigned Tasks</a>
+                <a href="{% url 'teacher_enrolled_students' %}" class="block px-3 py-2 rounded hover:bg-gray-100">Enrolled Students</a>
+                <a href="{% url 'teacher_my_complaints' %}" class="block px-3 py-2 rounded hover:bg-gray-100">My Complaints</a>
+                <a href="{% url 'logout' %}" class="block px-3 py-2 text-red-600 hover:text-red-800">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <!-- Top bar -->
+            <header class="bg-white shadow p-4 flex items-center justify-between">
+                <h2 class="text-lg font-semibold">Welcome, {{ request.user.first_name|default:request.user.username }}</h2>
+                <div class="space-x-2">
+                    <span class="text-sm text-gray-600">Role: Teacher</span>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <section class="p-4">
+                {% block content %}
+                {% endblock %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "franchise_owner/base.html" %}
+{% block title %}Students{% endblock %}
+{% block content %}
+<div class="p-6">
+  <h2 class="text-2xl font-semibold text-blue-800 mb-4">All Students</h2>
+  <table class="w-full bg-white shadow rounded">
+    <thead class="bg-gray-100 text-gray-700 text-left">
+      <tr>
+        <th class="px-4 py-2 text-left">Name</th>
+        <th class="px-4 py-2 text-left">Enrollment</th>
+        <th class="px-4 py-2 text-left">Institute</th>
+        <th class="px-4 py-2 text-left">Status</th>
+      </tr>
+    </thead>
+    <tbody class="text-left">
+      {% for student in students %}
+      <tr class="border-b">
+        <td class="px-4 py-2 text-left">{{ student.user.get_full_name }}</td>
+        <td class="px-4 py-2 text-left">{{ student.enrollment_number }}</td>
+        <td class="px-4 py-2 text-left">{{ student.institute.name }}</td>
+        <td class="px-4 py-2 text-left">
+          <span class="px-2 py-1 rounded-full text-xs font-medium {{ student.is_active|yesno:'bg-green-200 text-green-700,bg-red-200 text-red-700' }}">
+            {{ student.is_active|yesno:"Active,Inactive" }}
+          </span>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-left py-4">No students found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'manager/base.html' %}
+{% block title %}Complaint Tracker{% endblock %}
+
+{% block content %}
+<div class="p-6">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold text-green-700">Complaint Tracker</h2>
+    <a href="{% url 'complaint_create' %}" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded shadow">Add Complaint</a>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full table-auto bg-white shadow rounded-lg">
+      <thead class="bg-blue-100 text-left">
+        <tr>
+          <th class="p-4">Title</th>
+          <th class="p-4">User</th>
+          <th class="p-4">Category</th>
+          <th class="p-4">Status</th>
+          <th class="p-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for complaint in complaints %}
+        <tr class="border-b">
+          <td class="p-4">{{ complaint.title }}</td>
+          <td class="p-4">{{ complaint.user.username }}</td>
+          <td class="p-4">{{ complaint.category }}</td>
+          <td class="p-4">{{ complaint.status }}</td>
+          <td class="p-4 space-x-2">
+            <a href="{% url 'complaint_update' complaint.id %}" class="text-yellow-600 hover:underline">Edit</a>
+            <a href="{% url 'complaint_delete' complaint.id %}" class="text-red-600 hover:underline">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" class="p-4 text-center">No complaints submitted yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

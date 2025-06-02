@@ -1,0 +1,36 @@
+{% extends 'manager/base.html' %}
+{% block title %}Sales Reports{% endblock %}
+
+{% block content %}
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4 text-purple-700">Download Sales Reports</h2>
+  <table class="min-w-full table-auto bg-white rounded shadow">
+    <thead class="bg-purple-100">
+      <tr>
+        <th class="p-4 text-left">Franchise</th>
+        <th class="p-4 text-left">Month</th>
+        <th class="p-4 text-left">Year</th>
+        <th class="p-4 text-left">Total Sales</th>
+        <th class="p-4 text-left">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+      <tr class="border-b">
+        <td class="p-4">{{ report.franchise.name }}</td>
+        <td class="p-4">{{ report.month }}</td>
+        <td class="p-4">{{ report.year }}</td>
+        <td class="p-4">₹{{ report.total_sales_amount }}</td>
+        <td class="p-4">
+          <a href="{{ report.report_file.url }}" class="text-blue-600 underline" download>Download</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5" class="p-4 text-center">No reports available.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

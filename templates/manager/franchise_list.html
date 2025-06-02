@@ -1,0 +1,38 @@
+{% extends 'manager/base.html' %}
+{% block title %}All Franchises{% endblock %}
+
+{% block content %}
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4 text-green-700">All Franchises</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full table-auto bg-white shadow rounded-lg">
+      <thead class="bg-green-100 text-left">
+        <tr>
+          <th class="p-4">Name</th>
+          <th class="p-4">Owner</th>
+          <th class="p-4">City</th>
+          <th class="p-4">Phone</th>
+          <th class="p-4">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for franchise in franchises %}
+        <tr class="border-b">
+          <td class="p-4 font-medium">{{ franchise.name }}</td>
+          <td class="p-4">{{ franchise.owner.get_full_name }}</td>
+          <td class="p-4">{{ franchise.city }}</td>
+          <td class="p-4">{{ franchise.phone }}</td>
+          <td class="p-4">
+            <span class="px-2 py-1 rounded-full text-xs bg-green-200 text-green-800">
+              Active
+            </span>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" class="p-4 text-center">No franchises found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-white">
+  <div class="container mx-auto grid md:grid-cols-2 items-center px-6 py-24 gap-12">
+    <div class="space-y-6 animate-fade-in">
+      <h1 class="text-5xl font-extrabold text-gray-900 leading-tight">Empowering Education<br>Through Technology</h1>
+      <p class="text-lg text-gray-600">Learn Net connects students, teachers, and franchises with tools to grow, manage, and teach at scale.</p>
+      <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full font-semibold transition duration-300">Get Started</a>
+    </div>
+    <div class="hidden md:block animate-fade-in">
+      <img src="https://static.vecteezy.com/system/resources/previews/021/714/954/non_2x/franchise-advertising-illustration-with-business-and-finance-to-promoting-successful-brand-or-marketing-in-cartoon-hand-drawn-landing-page-templates-vector.jpg" alt="Hero Image" class="rounded-2xl w-full h-full object-cover max-h-[28rem]">
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="bg-green-50 py-24">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Key Features</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <!-- Feature 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+        <img src="https://static.vecteezy.com/system/resources/previews/054/682/791/non_2x/alumni-network-flat-circle-style-icon-vector.jpg" alt="Student Management" class="rounded-md mb-4 w-full h-40 object-cover" />
+        <h3 class="text-xl font-semibold text-green-600 mb-2">Student Management</h3>
+        <p class="text-gray-600">Easily manage student profiles, admissions, and performance from one place.</p>
+      </div>
+      <!-- Feature 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/digital-classroom-illustration-download-in-svg-png-gif-file-formats--website-web-class-page-online-learning-pack-school-education-illustrations-2932170.png?f=webp" alt="Digital Classrooms" class="rounded-md mb-4 w-full h-40 object-cover" />
+        <h3 class="text-xl font-semibold text-green-600 mb-2">Digital Classrooms</h3>
+        <p class="text-gray-600">Interactive course creation with study materials, assignments, and tests.</p>
+      </div>
+      <!-- Feature 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300">
+        <img src="https://png.pngtree.com/png-vector/20220723/ourmid/pngtree-franchise-shop-business-brand-businessman-png-image_6043839.png" alt="Franchise Tools" class="rounded-md mb-4 w-full h-40 object-cover" />
+        <h3 class="text-xl font-semibold text-green-600 mb-2">Franchise Tools</h3>
+        <p class="text-gray-600">Control multiple branches, manage tasks, monitor sales and operational data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="bg-white py-24">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">What Our Users Say</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-green-50 p-6 rounded-xl shadow">
+        <p class="text-gray-700 italic mb-4">“Learn Net transformed how we manage our school. Everything is streamlined and easy to use.”</p>
+        <h4 class="font-semibold text-green-600">Aisha Khan</h4>
+      </div>
+      <div class="bg-green-50 p-6 rounded-xl shadow">
+        <p class="text-gray-700 italic mb-4">“As a teacher, I love how organized the classroom tools are. It saves me hours every week.”</p>
+        <h4 class="font-semibold text-green-600">Ravi Patel</h4>
+      </div>
+      <div class="bg-green-50 p-6 rounded-xl shadow">
+        <p class="text-gray-700 italic mb-4">“Managing multiple branches used to be chaos. Learn Net gave us clarity and control.”</p>
+        <h4 class="font-semibold text-green-600">Samantha Lee</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- FAQ Section -->
+<section class="bg-green-50 py-24">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+
+      <!-- FAQ Item Template -->
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">How does Learn Net work?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">Learn Net is a cloud-based platform that provides tools to manage students, run digital classrooms, and operate multiple branches seamlessly.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">Can I try it for free?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">Yes, we offer a 14-day free trial with full access to all features.</p>
+      </div>
+
+      <!-- FAQ Item -->
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">Is support available?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">Absolutely! Our team is available via chat and email, with priority support on Pro and Enterprise plans.</p>
+      </div>
+
+      <!-- More FAQs -->
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">What makes Learn Net different from others?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">We offer a unified solution for students, teachers, and franchise managers — covering learning, administration, and analytics all in one platform.</p>
+      </div>
+
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">Can I manage multiple branches?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">Yes, our franchise management tools allow you to track data, performance, and operations across all your branches in real time.</p>
+      </div>
+
+      <div x-data="{ open: false }" class="border-b pb-4">
+        <button @click="open = !open" class="w-full text-left flex items-center justify-between">
+          <h4 class="font-semibold text-green-700 text-lg">Is Learn Net mobile-friendly?</h4>
+          <svg :class="{'rotate-180': open}" class="w-5 h-5 text-green-600 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <p x-show="open" x-transition class="text-gray-600 mt-2">Yes, the platform works seamlessly across desktop, tablet, and mobile devices for both students and educators.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Include Alpine.js for interactivity -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+<!-- How It Works Section -->
+<section class="bg-white py-24">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-16">How Learn Net Works</h2>
+    <div class="grid md:grid-cols-3 gap-12 text-left">
+      <div class="space-y-4">
+        <div class="text-green-600 text-4xl font-extrabold">1</div>
+        <h3 class="text-xl font-semibold text-gray-800">Sign Up</h3>
+        <p class="text-gray-600">Create your account as a student, teacher, or franchise admin. It only takes a few minutes.</p>
+      </div>
+      <div class="space-y-4">
+        <div class="text-green-600 text-4xl font-extrabold">2</div>
+        <h3 class="text-xl font-semibold text-gray-800">Customize & Onboard</h3>
+        <p class="text-gray-600">Add your classes, students, and branches. Use intuitive tools to get started instantly.</p>
+      </div>
+      <div class="space-y-4">
+        <div class="text-green-600 text-4xl font-extrabold">3</div>
+        <h3 class="text-xl font-semibold text-gray-800">Start Teaching & Managing</h3>
+        <p class="text-gray-600">Launch your operations. Track performance, manage tasks, and deliver content seamlessly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Team Section -->
+<section class="bg-green-50 py-24">
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-16">Meet Our Team</h2>
+    <div class="grid md:grid-cols-3 gap-12">
+      <div class="text-center">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-semibold text-gray-800">Arjun Mehta</h4>
+        <p class="text-green-600">CEO & Co-Founder</p>
+      </div>
+      <div class="text-center">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-semibold text-gray-800">Sana Rahim</h4>
+        <p class="text-green-600">Head of Product</p>
+      </div>
+      <div class="text-center">
+        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full mb-4">
+        <h4 class="text-xl font-semibold text-gray-800">David Liu</h4>
+        <p class="text-green-600">CTO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Roadmap Section -->
+<section class="bg-white py-24">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-16">Our Journey & Roadmap</h2>
+    <div class="space-y-12 max-w-3xl mx-auto relative before:absolute before:top-0 before:left-1/2 before:transform before:-translate-x-1/2 before:w-1 before:h-full before:bg-green-200">
+      <div class="relative pl-12 md:pl-24">
+        <div class="absolute left-1/2 transform -translate-x-1/2 bg-green-600 w-5 h-5 rounded-full"></div>
+        <h4 class="text-lg font-semibold text-gray-800">Q1 2023 - Launch</h4>
+        <p class="text-gray-600">Platform launched with core classroom and franchise tools.</p>
+      </div>
+      <div class="relative pl-12 md:pl-24">
+        <div class="absolute left-1/2 transform -translate-x-1/2 bg-green-600 w-5 h-5 rounded-full"></div>
+        <h4 class="text-lg font-semibold text-gray-800">Q3 2024 - AI Features</h4>
+        <p class="text-gray-600">Smart grading and content recommendation engine.</p>
+      </div>
+      <div class="relative pl-12 md:pl-24">
+        <div class="absolute left-1/2 transform -translate-x-1/2 bg-green-600 w-5 h-5 rounded-full"></div>
+        <h4 class="text-lg font-semibold text-gray-800">Q1 2025 - Mobile App Launch</h4>
+        <p class="text-gray-600">Cross-platform native apps for students and teachers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Community Impact Section -->
+<section class="bg-white py-28">
+  <div class="container mx-auto px-6 space-y-20">
+    <!-- Intro -->
+    <div class="text-center max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4">Join a Growing Community of Educators</h2>
+      <p class="text-lg text-gray-600">Our platform is making a difference in classrooms and learning environments across the globe. Together, we’re building the future of education — accessible, scalable, and powerful.</p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid md:grid-cols-4 gap-12 text-center">
+      <div>
+        <h3 class="text-5xl font-extrabold text-green-600">120K+</h3>
+        <p class="text-gray-600 text-lg mt-2">Active Students</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-extrabold text-green-600">8K+</h3>
+        <p class="text-gray-600 text-lg mt-2">Teachers Onboarded</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-extrabold text-green-600">450+</h3>
+        <p class="text-gray-600 text-lg mt-2">Institutions Enrolled</p>
+      </div>
+      <div>
+        <h3 class="text-5xl font-extrabold text-green-600">25</h3>
+        <p class="text-gray-600 text-lg mt-2">Countries Reached</p>
+      </div>
+    </div>
+
+    <!-- Call to Action Image -->
+    <div class="md:flex items-center gap-12">
+      <div class="md:w-1/2">
+        <img src="https://cdn-icons-png.flaticon.com/256/4237/4237289.png" alt="Global Impact" class="rounded-2xl">
+      </div>
+      <div class="md:w-1/2 mt-8 md:mt-0 space-y-4">
+        <h3 class="text-2xl font-semibold text-green-700">We’re not just a platform. We’re a movement.</h3>
+        <p class="text-gray-600 text-lg">From rural classrooms to international academies, Learn Net helps communities bridge the education gap. Our tools empower teachers, engage learners, and support scalable impact — anywhere, anytime.</p>
+        <a href="#" class="inline-block bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full font-semibold transition">Become a Part of It</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}
